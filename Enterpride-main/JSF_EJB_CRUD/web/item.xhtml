@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <a href="index.jsf">Home</a><br/><br/>
+            <a href="add_item.jsf">Add Item</a><br/><br/>
+            <h:dataTable value="#{ManagedBean.findAllItem()}" var="item" border="1">
+                <h:column>
+                    <f:facet name="header">Item ID</f:facet>
+                    <h:outputText value="#{item.itemId}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Item Name</f:facet>
+                    <h:outputText value="#{item.itemName}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Item Category</f:facet>
+                    <h:outputText value="#{item.categoryId.categoryName}"/>
+                </h:column>
+                <h:column>
+                    <h:commandLink value="Edit" action="#{ManagedBean.searchItem(item.itemId)}"/>
+                </h:column>
+                <h:column>
+                    <h:commandLink value="Delete" action="#{ManagedBean.deleteItem(item.itemId)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

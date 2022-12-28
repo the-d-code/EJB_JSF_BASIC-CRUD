@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+      <h:form>
+          <h2>Records</h2>
+          <h:dataTable value="#{category_bean.showCategory()}" var="c" border="3">
+              <h:column>
+                  <f:facet name="header">Category ID</f:facet>
+                  <h:outputText value="#{c.categoryId}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">Category Name</f:facet>
+                  <h:outputText value="#{c.categoryName}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">Delete</f:facet>
+                  <h:commandLink value="Delete" action="#{category_bean.deleteCategory(c.categoryId)}"/>
+              </h:column>
+              <h:column>
+                  <f:facet name="header">Update</f:facet>
+                  <h:commandLink value="Update" action="#{category_bean.searchCategory(c.categoryId)}"/>
+              </h:column>
+          </h:dataTable>
+      </h:form>
+    </h:body>
+</html>
+
